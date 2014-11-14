@@ -1,0 +1,11 @@
+METHOD 1
+--------
+1) Map to parse twitter stream into tweets, filtering for certain criteria like no RT, keywords, etc. (key for reduce doesn't matter, identity function)
+2) Map to pull out last word from tweet (turn into the key) - each mapper only needs to send one tweet with each word so as to avoid bombarding reducer with many tweets ending in this word which we'd just pick one from anyway, reduce to ensure there is only one copy of each last word (either random, or most similar to a length of tweet, or most retweeted etc.)
+3) Map to pull out rhyme of the last word (turn into the key), reduce (1 reducer) to just pull out two of them for each key - that's your poem done
+
+METHOD 2
+--------
+1) As above
+2) Map to pull out the rhyme of the last word (turn into the key), reduce to compile all tweets that rhyme into a list
+3) Map this list of rhyming tweets to ensure unique tweets (i.e. RTs are deleted), and choose pairs of rhyming lines (could turn chosen line number into key, e.g. 1, 3, 2, 4, if ABAB rhyming...), reduce just to sort the final list by key on 1 reducer
