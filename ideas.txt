@@ -7,5 +7,6 @@ METHOD 1
 METHOD 2
 --------
 1) As above
+Optional) Delete duplicate tweets by mapping tweet as key, value as null, then sending to reduce which groups all the nulls together by key (and we ignore total number of nulls, just use the unique key set)
 2) Map to pull out the rhyme of the last word (turn into the key), reduce to compile all tweets that rhyme into a list
 3) Map this list of rhyming tweets to ensure unique tweets (i.e. RTs are deleted), and choose pairs of rhyming lines (could turn chosen line number into key, e.g. 1, 3, 2, 4, if ABAB rhyming...), reduce just to sort the final list by key on 1 reducer
