@@ -3,9 +3,9 @@
 # Input: stream of Twitter data
 # Extracts name, date, tweet text
 # Filters for conditions --> no RT, contains certain hashtag/word(s), certain length, remove hashtags... etc.
-# Output: (text, [date, name])
+# Output: (text, date, name)
 
 # Reducer to collect unique filtered tweets
-# Input: (text, [date, name])
+# Input: (text, date, name)
 # Selects only earliest date for tweet using min function
-# Output: (text, [date, name])
+# Output: (text, date, name)
