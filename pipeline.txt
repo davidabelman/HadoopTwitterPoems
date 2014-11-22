@@ -1,3 +1,4 @@
+See README for updated.
 
 # Mapper to parse and filter tweets
 # Input: stream of Twitter data
@@ -9,4 +10,3 @@
 # Input: (text, date, name)
 # Selects only earliest date for tweet using min function
 # Output: (text, date, name)
-
