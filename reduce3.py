@@ -9,8 +9,9 @@
 import sys
 import dateutil.parser as dparser
 import HTMLParser
+from tweet_filter import total_lines
+
 h= HTMLParser.HTMLParser()
-total_lines = 32
 counter = 0
 
 # Specify HTML output format and location

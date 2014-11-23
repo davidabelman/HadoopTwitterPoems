@@ -16,6 +16,7 @@ words_in_tweet1 = ""   # Terms that first line of couplet must contain - can lea
 words_in_tweet2 = ""    # Terms that second line of couplet must contain - can leave as blank string
 scan_pattern_mode = [14,15]
 randomness = True
+total_lines = 16
 
 def remove_punctuation(input):
 	"""
