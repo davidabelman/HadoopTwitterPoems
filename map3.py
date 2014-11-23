@@ -49,7 +49,8 @@ def create_banned_word_pairs():
 	['gary', 'dairy'],
 	['while', 'awhile'],
 	['alot', 'a lot'],
-	['her','in']
+	['her','in'],
+	['live','alive']
 	]
 	banned_pairs = []
 	for s in banned_last_word_sets:
@@ -113,6 +114,8 @@ def score_scan_pattern(scan_pattern, mode):
 	Given a scan pattern (e.g. ['2', '1', '0', '0', '1', '2', '2', '2', '2', '2'])
 	Provides a score based on number of 1s and 2s
 	Currently set up for 01010101 type scoring.
+	Also input a mode - if a list (e.g. [7,8,9]) it searches for 7/8/9 syllable patterns
+	If one of the other modes, specific scoring patterns are applied (see code)
 	"""
 	minimal = 0.01  # Minimal score in case nothing returned. If 0, we may have no lines.
 	_0s = scan_pattern.count('0')
@@ -131,48 +134,6 @@ def score_scan_pattern(scan_pattern, mode):
 			return 1
 		else:
 			return 0
-
-	if mode == '12 syllable':
-		if _total==12:
-			return 1
-		else:
-			return 0	
-
-	if mode == '7 syllable':
-		if _total==7:
-			return 1
-		else:
-			return 0	
-
-	if mode == '5 syllable':
-		if _total==5:
-			return 1
-		else:
-			return 0	
-
-	if mode == '4 syllable':
-		if _total==4:
-			return 1
-		else:
-			return 0	
-
-	if mode == '3 syllable':
-		if _total==3:
-			return 1
-		else:
-			return 0	
-
-	if mode == '11 syllable':
-		if _total==11:
-			return 1
-		else:
-			return 0	
-
-	if mode == '14 syllable':
-		if _total==14:
-			return 1
-		else:
-			return 0	
 	
 	if mode == '8 beat loose':
 		if _total==13:
