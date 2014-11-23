@@ -10,11 +10,11 @@ banned_terms = ['RT', 'http', '@', '#']   # Tweet will be removed if any of thes
 banned_terms = ['http', '@', 'bae', 'ugh', '#', 'mic']
 allowed_length = [2,15]   # Tweet must be between these lengths of words
 first_words = ""   # Leave blank to ignore this condition
-must_have_terms_AND = []   # Terms that tweet must have (all of them) - can leave as blank list
+must_have_terms_AND = ['you']   # Terms that tweet must have (all of them) - can leave as blank list
 must_have_terms_OR = []   # Terms that tweet must have (1 or more of them) - can leave as blank list
 words_in_tweet1 = ""   # Terms that first line of couplet must contain - can leave as blank string
 words_in_tweet2 = ""    # Terms that second line of couplet must contain - can leave as blank string
-scan_pattern_mode = [14,15]
+scan_pattern_mode = [13,14,15]
 randomness = True
 total_lines = 16
 
