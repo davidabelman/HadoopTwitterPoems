@@ -18,14 +18,19 @@ Method
 
 Getting Twitter data
 ====================
-Can be done in 2 ways. Either use the Twitter firehose to fill 'firehose.txt', at a rate of 100MB per 10 minutes, or so. get_twitter_1pc.py should be run to do this (overwrites file each time). Other option, allowing more subject specific tweets, is to run python get_tweets.py. Within this file we can edit the search term (see Twitter documentation for building search queries) to include exact phrases, exclude terms (such as 'RT', etc.) and also set how many pages of tweets (each 100 tweets long) we would like to pull.
+Can be done in 2 ways. Either use the Twitter firehose to fill 'firehose.txt', at a rate of 100MB per 10 minutes, or so. get_twitter_1pc.py should be run to do this (overwrites file each time). Other option, allowing more subject specific tweets, is to run python get_tweets.py. Within this file we can edit the search term (see Twitter documentation for building search queries) to include exact phrases, exclude terms (such as 'RT', etc.) and also set how many pages of tweets (each 100 tweets long) we would like to pull. Format is:
+
+>>python get_tweets.py chosen_filename
+
+with all tweets being appended to this file if it exists already.
 
 Running MapReduce
 =================
 As above, run:
 >> cat tweet_data/some_twitter_stream_data.txt | python map1_tweets.py | sort -k1,1 | python reduce1.py | python map2.py | sort | python reduce2.py | python map3.py | sort -r | python reduce3.py
-Note that we filter the tweets within 'map1_tweets.py' using the external module 'filter_tweets.py'. Within this, we can specify words that the tweets must start with, and/or conditions on words in the tweets, length of tweets (limiting to 5-8 words works well)
+
+Note that we filter the tweets using the external module 'tweet_filter.py'. Within this, we can specify words that the tweets must start with, and/or conditions on words in the tweets, length of tweets (limiting to 5-8 words works well), scan patterns and so on. Thus between runs of the MapReduce it is likely you will be playing with the parameters in tweet_filter.py.
 
 Uploading to website
 ====================
-The output from reducer3.py should be copied and pasted into a Python file, and actually acts as a module within the Flask application. Thus a poem about Obama should be created as 'obama.py', saved within app.py. Then a link can be added to the main webpage, and the module will be loaded within the flask app when the link is clicked.
+The output from reducer3.py should be copied and pasted into a Python file, and actually acts as a module within the Flask application. Thus a poem about Obama should be created as 'obama.py', saved within app.py folder (separate repo). Then a link can be added to the main webpage, and the module will be loaded within the flask app when the link is clicked.
