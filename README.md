@@ -5,6 +5,10 @@ from Tweets meeting a certain criteria (for example, a certain hashtag).
 Project to use Hadoop Streaming with Python scripts to parse and
 filter tweets, find rhymes, and order appropriately.
 
+This repo contains the code to produce the poetry itself.
+Note that the repo in which the actual website HTML etc. resides is: https://github.com/davidabelman/HadoopTwitterPoems_FlaskApp
+
+
 Usage
 =====
 A mapreduce style job running locally using STDIN and STDOUT can be initiated with:
@@ -14,7 +18,7 @@ Note that map1_tweets.py can be replaced by map1_text.py if we wish to input a p
 
 Method
 ======
-3 layers of MapReduce take place. Firstly, unique tweets are picked, with the earliest unique tweet being selected (to attribute original author). Secondly, rhyming tweets are grouped together. Thirdly, optimal pairs of tweets are selected from this rhyme group (based on scantion and overlapping words). Most of the logic that is not trivial is performed within the 3rd mapper (checking for scan, checking for semantic similarities, pairing optimal sets of lines together, etc.)
+3 layers of MapReduce take place. Firstly, unique tweets are picked, with the earliest unique tweet being selected (to attribute original author). Secondly, rhyming tweets are grouped together. Thirdly, optimal pairs of tweets are selected from this rhyme group (based on scantion and overlapping words). Most of the logic that is not trivial is performed within the 3rd mapper (checking for scan, checking for semantic similarities, pairing optimal sets of lines together, etc.). More detail on these can be seen within the code, and on the 'How it works' section of http://twitterpoems.herokuapp.com/
 
 Getting Twitter data
 ====================
@@ -22,7 +26,7 @@ Can be done in 2 ways. Either use the Twitter firehose to fill 'firehose.txt', a
 
 >>python get_tweets.py chosen_filename
 
-with all tweets being appended to this file if it exists already.
+with all tweets being appended to this file if it exists already. A .txt extension is not required (automatically added).
 
 Running MapReduce
 =================
@@ -33,4 +37,4 @@ Note that we filter the tweets using the external module 'tweet_filter.py'. With
 
 Uploading to website
 ====================
-The output from reducer3.py should be copied and pasted into a Python file, and actually acts as a module within the Flask application. Thus a poem about Obama should be created as 'obama.py', saved within app.py folder (separate repo). Then a link can be added to the main webpage, and the module will be loaded within the flask app when the link is clicked.
+The output from reducer3.py should be copied and pasted into a Python file, and actually acts as a module within the Flask application. Thus a poem about Obama should be created as 'obama.py', saved within app.py folder (a separate repo - https://github.com/davidabelman/HadoopTwitterPoems_FlaskApp). Then a link can be added to the main webpage, and the module will be loaded within the flask app when the link is clicked.
