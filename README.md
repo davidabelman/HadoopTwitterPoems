@@ -2,8 +2,8 @@ Introduction
 ============
 Toy project aiming to automatically create 'poetry' (rhyming couplets)
 from Tweets meeting a certain criteria (for example, a certain hashtag).
-Project to use Hadoop Streaming with Python scripts to parse and
-filter tweets, find rhymes, and order appropriately.
+Project uses Hadoop Streaming with Python scripts to parse and
+filter tweets, find rhymes, and order appropriately. Output poetry can be found at http://twitterpoems.herokuapp.com/. Enjoy!
 
 This repo contains the code to produce the poetry itself.
 Note that the repo in which the actual website HTML etc. resides is: https://github.com/davidabelman/HadoopTwitterPoems_FlaskApp
